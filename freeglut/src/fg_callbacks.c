@@ -173,7 +173,7 @@ void fghDefaultReshape( int width, int height, FGCBUserData userData )
 void FGAPIENTRY glutReshapeFuncUcall( FGCBReshapeUC callback, FGCBUserData userData )
 {
     FREEGLUT_EXIT_IF_NOT_INITIALISED ( "glutReshapeFuncUcall" );
-    
+
     if( !callback )
     {
         callback = fghDefaultReshape;
@@ -200,7 +200,7 @@ IMPLEMENT_GLUT_CALLBACK_FUNC_ARG2(Reshape)
  * http://stackoverflow.com/questions/5445889/get-which-process-window-is-actually-visible-in-c-sharp
  * for an implementation outline (but it would be polling based, not push based).
  */
-static void fghVisibility( int status, FGCBUserData userData )
+static void fghVisibility( int status, FGCBUserData p_userData )
 {
     int vis_status;
 
@@ -247,15 +247,15 @@ void FGAPIENTRY glutJoystickFuncUcall( FGCBJoystickUC callback, int pollInterval
            fgStructure.CurrentWindow->State.JoystickPollRate <= 0 ||        /* Joystick callback was disabled */
            !FETCH_WCB(*fgStructure.CurrentWindow,Joystick)
          ) &&
-         ( 
+         (
            callback && ( pollInterval > 0 )                                 /* but is now enabled */
          ) )
         ++fgState.NumActiveJoysticks;
-    else if ( ( 
+    else if ( (
                 fgStructure.CurrentWindow->State.JoystickPollRate > 0 &&    /* Joystick callback was enabled */
                 FETCH_WCB(*fgStructure.CurrentWindow,Joystick)
-              ) &&  
-              ( 
+              ) &&
+              (
                 !callback || ( pollInterval <= 0 )                          /* but is now disabled */
               ) )
         --fgState.NumActiveJoysticks;

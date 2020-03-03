@@ -895,7 +895,7 @@ struct tagSFG_StrokeFont
  * interspersed
  */
 
-#if TARGET_HOST_MACINTOSH
+#if defined( TARGET_HOST_MACINTOSH )
 #    include <InputSprocket.h>
 #endif
 
@@ -910,7 +910,7 @@ struct tagSFG_StrokeFont
  */
 #define _JS_MAX_BUTTONS 32
 
-#if TARGET_HOST_MACINTOSH
+#if defined( TARGET_HOST_MACINTOSH )
 #    define _JS_MAX_AXES  9
 typedef struct tagSFG_PlatformJoystick SFG_PlatformJoystick;
 struct tagSFG_PlatformJoystick

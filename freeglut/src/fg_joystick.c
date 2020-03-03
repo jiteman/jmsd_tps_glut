@@ -314,7 +314,7 @@ static void fghJoystickAddHatElement ( SFG_Joystick *joy, CFDictionaryRef button
  *  Platform-Specific Code
  */
 
-#if TARGET_HOST_MACINTOSH
+#if defined( TARGET_HOST_MACINTOSH )
 void fgPlatformJoystickRawRead( SFG_Joystick* joy, int* buttons, float* axes )
 {
     int i;
